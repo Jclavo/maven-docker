@@ -28,3 +28,36 @@ Install packages
 # Useful links
 
 - https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+# Install
+
+mvn -DskipTests install
+mvn install
+mvn package
+
+cd /usr/app/
+
+cp /usr/app/lib/rt.jar /usr/local/openjdk-11/lib/
+
+# Docker 
+
+sudo service docker start
+docker-compose up
+docker-compose build --no-cache
+docker exec -it flowdroid-securibench /bin/bash
+cd /usr/app/app_folder_name
+
+## Test
+
+mvn compile test
+
+mvn test -Dtest=soot.jimple.infoflow.test.securibench.AliasingTests
+mvn test -Dtest=soot.jimple.infoflow.test.junit.TypeTests
+mvn test -Dtest="soot.jimple.infoflow.test.junit.TypeTests#stringToObjectTest()"
+
+mvn package -Dmaven.test.skip=true
+
+mvn test -Dtest="soot.jimple.infoflow.test.securibench.**"
+mvn test -Dtest="soot.jimple.infoflow.test.junit.**"
+mvn test -Dtest=SessionTests
+https://stackoverflow.com/questions/6819888/how-to-run-all-tests-in-a-particular-package-with-maven
