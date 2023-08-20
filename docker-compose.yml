@@ -9,6 +9,6 @@ services:
       dockerfile: ./Dockerfile
     volumes:
         - ./app:/usr/app
-    ports:
-      - 3010:3000
+    # ports:
+    #  - 3010:3000
     command: tail -f /dev/null # keep open container 
